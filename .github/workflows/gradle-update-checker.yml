@@ -4,9 +4,17 @@ on:
     - cron: "0 0 * * *"
 jobs:
   update-gradle-wrapper:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        java: [ 16 ]
+    runs-on: [ ubuntu-latest ]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2.3.4
+      - name: Set up JDK ${{ matrix.java }}
+        uses: actions/setup-java@v2.1.0
+        with:
+          java-version: ${{ matrix.java }}
+          distribution: 'adopt'
       - name: Update Gradle Wrapper
         uses: gradle-update/update-gradle-wrapper-action@v1.0.14
