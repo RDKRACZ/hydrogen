@@ -17,4 +17,4 @@ jobs:
           java-version: ${{ matrix.java }}
           distribution: 'adopt'
       - name: Update Gradle Wrapper
-        uses: gradle-update/update-gradle-wrapper-action@v1.0.15
+        uses: gradle-update/update-gradle-wrapper-action@v1.0.18
